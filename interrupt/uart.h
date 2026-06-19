@@ -2,7 +2,7 @@
 #define UART_H
 
 void usart1_init();
-char usart1_read_char();
 void usart1_write_char(char c);
+void USART1_IRQHandler(void);
 
 #endif
