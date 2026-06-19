@@ -1,10 +1,11 @@
 #include "uart.h"
+#include "stdint.h"
 #include "string.h"
 
 #define BUFFER_SIZE 128
 
 char buf[BUFFER_SIZE];
-int idx = 0, bfull = 0;
+uint8_t idx = 0, bfull = 0;
 
 int main(void) {
   usart1_init();
@@ -36,7 +37,7 @@ void app(char ch) {
     printstr(buf);
     printstr("\r\n");
 
-    int len = strlen(buf);
+    uint32_t len = strlen(buf);
 
     printstr("length of str : ");
     printnumber(len);
