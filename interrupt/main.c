@@ -1,16 +1,16 @@
 #include "uart.h"
 #include "string.h"
 
+#define BUFFER_SIZE 128
+
+char buf[BUFFER_SIZE];
+int idx = 0, bfull = 0;
+
 int main(void) {
   usart1_init();
   while(1);
   return 0;
 }
-
-#define BUFFER_SIZE 128
-
-char buf[BUFFER_SIZE];
-int idx = 0, bfull = 0;
 
 void app(char ch) {
   if (!bfull) usart1_write_char(ch);
