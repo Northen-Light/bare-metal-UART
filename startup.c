@@ -1,4 +1,4 @@
-extern void main(void);
+extern int main(void);
 extern char _estack;
 extern char _end_rodata_;
 extern char _start_data_;
@@ -37,5 +37,6 @@ void Reset_Handler(void) {
 }
 
 void HardFault_Handler(void) {
+  __asm volatile ("bkpt #0");
   while(1);
 }
