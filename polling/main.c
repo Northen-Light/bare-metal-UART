@@ -26,7 +26,7 @@ int main(void) {
       printstr(buf);
       printstr("\r\n");
 
-      uint32_t len = strlen(buf);
+      uint8_t len = strlen(buf);
 
       strrev(buf, len);
       printstr("reverse str : ");
