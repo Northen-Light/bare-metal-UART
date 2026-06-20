@@ -37,7 +37,7 @@ void app(char ch) {
     printstr(buf);
     printstr("\r\n");
 
-    uint32_t len = strlen(buf);
+    uint8_t len = strlen(buf);
 
     printstr("length of str : ");
     printnumber(len);

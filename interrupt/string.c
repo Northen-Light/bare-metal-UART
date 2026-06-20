@@ -41,13 +41,13 @@ void strrev(char *s, uint8_t len) {
   }
 }
 
-uint32_t strlen(const char *buf) {
-  uint32_t len = 0;
+uint8_t strlen(const char *buf) {
+  uint8_t len = 0;
   while(*buf++) len++;
   return len;
 }
 
-int32_t to_upper(int32_t c) {
+char to_upper(char c) {
   return (c >= 'a' && c <= 'z') ? c - ('a' - 'A') : c;
 }
 
