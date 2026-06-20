@@ -17,7 +17,7 @@ void printnumber(uint8_t num) {
   uint8_t idx = 0, len;
   
   while (num) {
-    digits[idx++] = num % 10 + 48;
+    digits[idx++] = num % 10 + '0';
     num /= 10;
   }
 
