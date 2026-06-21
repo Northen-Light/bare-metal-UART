@@ -3,7 +3,7 @@
 
 static usart1_rx_callback_t rx_callback = 0;
 
-void usart1_init() {
+void usart1_init(void) {
   RCC_APB2ENR |= (1 << 2);
   RCC_APB2ENR |= (1 << 14);
 
@@ -34,12 +34,12 @@ void usart1_write_char(char c) {
   USART1_DR = c;
 }
 
-void usart1_register_rx_callback(usart1_rx_callback_t cb) {
+void usart1_set_rx_callback(usart1_rx_callback_t cb) {
   rx_callback = cb;
 }
 
 void USART1_IRQHandler(void) {
-  if (USART1_SR && (1 << 5)) {
+  if (USART1_SR & (1 << 5)) {
     if (rx_callback) {
       rx_callback(USART1_DR);
     }

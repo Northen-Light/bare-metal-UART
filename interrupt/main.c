@@ -11,7 +11,7 @@ uint8_t idx = 0, bfull = 0;
 
 int main(void) {
   usart1_init();
-  usart1_register_rx_callback(app);
+  usart1_set_rx_callback(app);
   while(1);
   return 0;
 }
