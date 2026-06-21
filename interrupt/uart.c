@@ -1,7 +1,7 @@
 #include "uart.h"
 #include "mmap-regs.h"
 
-extern void app(char ch);
+static usart1_rx_callback_t rx_callback = 0;
 
 void usart1_init() {
   RCC_APB2ENR |= (1 << 2);
@@ -34,6 +34,14 @@ void usart1_write_char(char c) {
   USART1_DR = c;
 }
 
+void usart1_register_rx_callback(usart1_rx_callback_t cb) {
+  rx_callback = cb;
+}
+
 void USART1_IRQHandler(void) {
-  app(USART1_DR);
+  if (USART1_SR && (1 << 5)) {
+    if (rx_callback) {
+      rx_callback(USART1_DR);
+    }
+  }
 }

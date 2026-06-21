@@ -4,11 +4,14 @@
 
 #define BUFFER_SIZE 128
 
+void app(char ch);
+
 char buf[BUFFER_SIZE];
 uint8_t idx = 0, bfull = 0;
 
 int main(void) {
   usart1_init();
+  usart1_register_rx_callback(app);
   while(1);
   return 0;
 }
